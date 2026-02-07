@@ -10,7 +10,8 @@
       "installOhMyZsh": "false",
       "installOhMyZshConfig": "false",
       "username": "vscode"
-    }
+    },
+    "ghcr.io/devcontainers/features/powershell:1": {}
   },
 
   "remoteUser": "vscode",
