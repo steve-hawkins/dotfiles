@@ -47,11 +47,15 @@ has_cmd() {
 }
 
 # Update package lists if we are going to install apt packages
-if ! has_cmd zsh || ! has_cmd eza; then
-  if [ -f "/etc/debian_version" ]; then
-    log "Updating apt..."
-    sudo apt-get update
-  fi
+if [ -f "/etc/debian_version" ]; then
+  log "Updating apt..."
+  sudo apt-get update
+fi
+
+# Install PowerShell
+if ! has_cmd pwsh; then
+  log "Installing PowerShell..."
+  sudo apt-get install -y powershell
 fi
 
 # Install Zsh
