@@ -4,7 +4,7 @@
   "name": "PowerShell",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
   // Microsoft's official image repository https://mcr.microsoft.com/en-us/catalog
-  "image": "mcr.microsoft.com/powershell:ubuntu-noble",
+  "image": "mcr.microsoft.com/devcontainers/base:bookworm",
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
       "installOhMyZsh": "false",
@@ -12,6 +12,8 @@
       "username": "vscode"
     }
   },
+
+  "remoteUser": "vscode",
 
   "postCreateCommand": "sudo chsh vscode -s \"$(which pwsh)\"",
 
