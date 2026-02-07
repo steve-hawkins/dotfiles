@@ -114,7 +114,7 @@ if has_cmd npm; then
   # Using the @google/gemini-cli package as requested for CLI experience
   if ! npm list -g @google/gemini-cli >/dev/null 2>&1; then
     log "Installing Google Gemini CLI..."
-    sudo npm install -g @google/gemini-cli
+    npm install -g @google/gemini-cli
   fi
 else
   error "npm not found. Cannot install Google Gemini CLI."
