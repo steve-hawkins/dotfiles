@@ -4,15 +4,13 @@
   "name": "PowerShell",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
   // Microsoft's official image repository https://mcr.microsoft.com/en-us/catalog
-  "image": "mcr.microsoft.com/devcontainers/javascript-node",
+  "image": "mcr.microsoft.com/powershell:ubuntu-noble",
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
-      "installZsh": "true",
-      "username": "vscode",
-      "upgradePackages": "true",
-      "nonFreePackages": "false"
-    },
-    "ghcr.io/devcontainers/features/powershell:1": {}
+      "installOhMyZsh": "false",
+      "installOhMyZshConfig": "false",
+      "username": "vscode"
+    }
   },
 
   "postCreateCommand": "sudo chsh vscode -s \"$(which pwsh)\"",

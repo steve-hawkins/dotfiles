@@ -85,6 +85,27 @@ log "Setting up Montys theme..."
 mkdir -p "$USER_HOME/.poshthemes"
 curl -sLo "$USER_HOME/.poshthemes/montys.omp.json" https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/montys.omp.json
 
+# Install Node.js and npm using nvm if not present
+NVM_DIR="$HOME/.nvm"
+if [ ! -d "$NVM_DIR" ]; then
+  log "Installing nvm..."
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+  # Source nvm to make it available in the current shell
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
+
+# Ensure nvm is sourced for subsequent commands
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+if ! has_cmd node; then
+  log "Installing latest LTS Node.js using nvm..."
+  nvm install --lts
+  nvm alias default 'lts/*'
+fi
+
 # 3. Specific Utilities
 
 # NPM Utilities
