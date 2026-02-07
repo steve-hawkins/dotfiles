@@ -85,7 +85,6 @@ log "Setting up Montys theme..."
 mkdir -p "$USER_HOME/.poshthemes"
 curl -sLo "$USER_HOME/.poshthemes/montys.omp.json" https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/montys.omp.json
 
-
 # 3. Specific Utilities
 
 # NPM Utilities
@@ -110,6 +109,22 @@ fi
 if ! uv tool list 2>/dev/null | grep -q "specify-cli"; then
   log "Installing spec-kit..."
   uv tool install specify-cli --from git+https://github.com/github/spec-kit.git --force
+fi
+
+# 4. Set up vscode
+
+# Install VS Code Extensions (if code command is available)
+if has_cmd code; then
+  log "Installing VS Code extensions..."
+  code --install-extension ms-vscode.powershell
+  code --install-extension streetsidesoftware.code-spell-checker
+  code --install-extension redhat.vscode-yaml
+  code --install-extension yzhang.markdown-all-in-one
+  code --install-extension davidanson.vscode-markdownlint
+  code --install-extension esbenp.prettier-vscode
+  code --install-extension eamodio.gitlens
+  code --install-extension google.gemini-cli-vscode-ide-companion
+  code --install-extension google.geminicodeassist
 fi
 
 log "Dotfiles installation complete!"
