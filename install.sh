@@ -77,7 +77,7 @@ curl -sLo "$USER_HOME/.poshthemes/montys.omp.json" https://raw.githubusercontent
 # 3. Specific Utilities
 
 # Google Antigravity CLI
-if ! has_cmd antigravity; then
+if ! has_cmd agy; then
   log "Installing Google Antigravity CLI..."
   curl -fsSL https://antigravity.google/cli/install.sh | bash
 fi
