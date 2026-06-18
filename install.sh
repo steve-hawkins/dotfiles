@@ -80,8 +80,6 @@ curl -sLo "$USER_HOME/.poshthemes/montys.omp.json" https://raw.githubusercontent
 if ! has_cmd antigravity; then
   log "Installing Google Antigravity CLI..."
   curl -fsSL https://antigravity.google/cli/install.sh | bash
-else
-  error "Installing Google Antigravity CLI failed."
 fi
 
 log "Dotfiles installation complete!"
