@@ -31,15 +31,6 @@ if [ -f "$DOTFILES_DIR/.zshrc" ]; then
   log "Linked .zshrc"
 fi
 
-# Symlink PowerShell profile
-PS_CONFIG_DIR="$USER_HOME/.config/powershell"
-mkdir -p "$PS_CONFIG_DIR"
-if [ -f "$DOTFILES_DIR/Microsoft.PowerShell_profile.ps1" ]; then
-  rm -f "$PS_CONFIG_DIR/Microsoft.PowerShell_profile.ps1"
-  ln -s "$DOTFILES_DIR/Microsoft.PowerShell_profile.ps1" "$PS_CONFIG_DIR/Microsoft.PowerShell_profile.ps1"
-  log "Linked PowerShell profile"
-fi
-
 # 2. Core Utilities
 
 has_cmd() {
@@ -50,12 +41,6 @@ has_cmd() {
 if [ -f "/etc/debian_version" ]; then
   log "Updating apt..."
   sudo apt-get update
-fi
-
-# Install PowerShell
-if ! has_cmd pwsh; then
-  log "Installing PowerShell..."
-  sudo apt-get install -y powershell
 fi
 
 # Install Zsh
@@ -89,51 +74,12 @@ log "Setting up Montys theme..."
 mkdir -p "$USER_HOME/.poshthemes"
 curl -sLo "$USER_HOME/.poshthemes/montys.omp.json" https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/montys.omp.json
 
-# Install Node.js and npm using nvm if not present
-NVM_DIR="$HOME/.nvm"
-if [ ! -d "$NVM_DIR" ]; then
-  log "Installing nvm..."
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
-  # Source nvm to make it available in the current shell
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-fi
-
-# Ensure nvm is sourced for subsequent commands
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-if ! has_cmd node; then
-  log "Installing latest LTS Node.js using nvm..."
-  nvm install --lts
-  nvm alias default 'lts/*'
-fi
-
 # 3. Specific Utilities
 
-# NPM Utilities
-if has_cmd npm; then
-  # Google Gemini CLI
-  # Using the @google/gemini-cli package as requested for CLI experience
-  if ! npm list -g @google/gemini-cli >/dev/null 2>&1; then
-    log "Installing Google Gemini CLI..."
-    npm install -g @google/gemini-cli
-  fi
-else
-  error "npm not found. Cannot install Google Gemini CLI."
-fi
-
-# uv and spec-kit
-if ! has_cmd uv; then
-  log "Installing uv..."
-  curl -LsSf https://astral.sh/uv/install.sh | sh
-  export PATH="$HOME/.local/bin:$PATH"
-fi
-
-if ! uv tool list 2>/dev/null | grep -q "specify-cli"; then
-  log "Installing spec-kit..."
-  uv tool install specify-cli --from git+https://github.com/github/spec-kit.git --force
+# Google Antigravity CLI
+if ! has_cmd antigravity; then
+  log "Installing Google Antigravity CLI..."
+  curl -fsSL https://antigravity.google/cli/install.sh | bash
 fi
 
 log "Dotfiles installation complete!"

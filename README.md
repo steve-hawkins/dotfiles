@@ -5,8 +5,7 @@ This directory contains configuration files and an installation script to set up
 ## Contents
 
 - **install.sh**: The main entry point. Installs utilities (zsh, eza, etc.), tools (Copilot, etc.), and links configuration files.
-- **Microsoft.PowerShell_profile.ps1**: Configuration for PowerShell, including Oh My Posh (Montys theme) and `eza` aliases.
-- **.zshrc**: Configuration for Zsh, matching the PowerShell setup.
+- **.zshrc**: Configuration for Zsh, including Oh My Posh (Montys theme) and `eza` aliases.
 
 ## Usage
 
