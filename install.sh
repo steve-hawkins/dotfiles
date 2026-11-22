@@ -80,18 +80,6 @@ log "Setting up Montys theme..."
 mkdir -p "$USER_HOME/.poshthemes"
 curl -sLo "$USER_HOME/.poshthemes/montys.omp.json" https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/montys.omp.json
 
-# Install Hack Nerd Font for terminal icons
-if ! has_cmd fc-list; then
-  log "Installing fontconfig..."
-  sudo apt-get install -y fontconfig
-fi
-
-if ! fc-list 2>/dev/null | grep -qi "Hack Nerd Font"; then
-  log "Installing Hack Nerd Font..."
-  oh-my-posh font install Hack
-  fc-cache -f
-fi
-
 # 3. Specific Utilities
 
 # Google Antigravity CLI

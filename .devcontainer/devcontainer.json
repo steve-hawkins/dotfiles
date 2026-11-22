@@ -20,7 +20,7 @@
       // Set *default* container specific settings.json values on container create.
       "settings": { 
         "terminal.integrated.defaultProfile.linux": "zsh",
-        "terminal.integrated.fontFamily": "Hack Nerd Font"
+        "terminal.integrated.fontFamily": "'Hack Nerd Font Mono', 'Hack Nerd Font', monospace"
       }
     }
   }

@@ -4,17 +4,19 @@ This directory contains configuration files and an installation script to set up
 
 ## Contents
 
-- **install.sh**: The main entry point. Installs utilities (`zsh`, `eza`, `xclip`, Oh My Posh, Hack Nerd Font, Antigravity CLI) and links configuration files.
+- **install.sh**: The main entry point. Installs utilities (`zsh`, `eza`, `xclip`, Oh My Posh, Antigravity CLI) and links configuration files.
 - **.zshrc**: Configuration for Zsh, including Oh My Posh (Montys theme) and `eza` aliases.
 
 ## Terminal Icons (Nerd Font)
 
-Oh My Posh and `eza --icons` require a Nerd Font to render icons properly. `install.sh` installs **Hack Nerd Font** inside the container, and `.devcontainer/devcontainer.json` sets `"terminal.integrated.fontFamily": "Hack Nerd Font"` for this repo.
+Oh My Posh and `eza --icons` require a Nerd Font to render icons properly. Because VS Code renders terminal fonts on your **local host machine / browser** (not inside the remote Codespace container), fonts must be installed locally:
 
-Because VS Code renders terminal fonts on your **host machine**, make sure **Hack Nerd Font** is also installed on your host OS and configured in your VS Code **User Settings**:
+1. Install **Hack Nerd Font** on your local machine (e.g., from [nerdfonts.com](https://www.nerdfonts.com/font-downloads), `brew install --cask font-hack-nerd-font` on macOS, or `oh-my-posh font install Hack` locally).
+2. Fully restart VS Code (or your browser if using Codespaces on the web).
+3. Add the following to your VS Code **User Settings** (with **Settings Sync** enabled so it applies to all Codespaces):
 
 ```json
-"terminal.integrated.fontFamily": "Hack Nerd Font"
+"terminal.integrated.fontFamily": "'Hack Nerd Font Mono', 'Hack Nerd Font', monospace"
 ```
 
 ## Usage
