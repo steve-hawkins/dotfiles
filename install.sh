@@ -49,6 +49,12 @@ if ! has_cmd zsh; then
   sudo apt-get install -y zsh
 fi
 
+# Install xclip
+if ! has_cmd xclip; then
+  log "Installing xclip..."
+  sudo apt-get install -y xclip
+fi
+
 # Install eza
 if ! has_cmd eza; then
   log "Installing eza..."
@@ -73,6 +79,18 @@ fi
 log "Setting up Montys theme..."
 mkdir -p "$USER_HOME/.poshthemes"
 curl -sLo "$USER_HOME/.poshthemes/montys.omp.json" https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/montys.omp.json
+
+# Install Hack Nerd Font for terminal icons
+if ! has_cmd fc-list; then
+  log "Installing fontconfig..."
+  sudo apt-get install -y fontconfig
+fi
+
+if ! fc-list 2>/dev/null | grep -qi "Hack Nerd Font"; then
+  log "Installing Hack Nerd Font..."
+  oh-my-posh font install Hack
+  fc-cache -f
+fi
 
 # 3. Specific Utilities
 
