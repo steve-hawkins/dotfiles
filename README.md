@@ -4,8 +4,18 @@ This directory contains configuration files and an installation script to set up
 
 ## Contents
 
-- **install.sh**: The main entry point. Installs utilities (zsh, eza, etc.), tools (Copilot, etc.), and links configuration files.
+- **install.sh**: The main entry point. Installs utilities (`zsh`, `eza`, `xclip`, Oh My Posh, Hack Nerd Font, Antigravity CLI) and links configuration files.
 - **.zshrc**: Configuration for Zsh, including Oh My Posh (Montys theme) and `eza` aliases.
+
+## Terminal Icons (Nerd Font)
+
+Oh My Posh and `eza --icons` require a Nerd Font to render icons properly. `install.sh` installs **Hack Nerd Font** inside the container, and `.devcontainer/devcontainer.json` sets `"terminal.integrated.fontFamily": "Hack Nerd Font"` for this repo.
+
+Because VS Code renders terminal fonts on your **host machine**, make sure **Hack Nerd Font** is also installed on your host OS and configured in your VS Code **User Settings**:
+
+```json
+"terminal.integrated.fontFamily": "Hack Nerd Font"
+```
 
 ## Usage
 
